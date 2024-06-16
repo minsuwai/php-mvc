@@ -1,13 +1,16 @@
-<?php
+<?php 
 
-class Home extends Controller{
-    public function index($a='', $b=''){
+/**
+ * home class
+ */
+class Home
+{
+	use Controller;
 
-        $model = new Model;
-        $model->test();
-        echo 'This is the home controller';
+	public function index()
+	{
+		$data['username'] = empty($_SESSION['USER']) ? 'User' : $_SESSION['USER']->email;
+		$this->view('home', $data);
+	}
 
-        $this->view('home');
-    }
 }
-
